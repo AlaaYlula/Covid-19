@@ -121,3 +121,22 @@
 ## DataBase Schema Diagram
 
 ![DataBaseSchemaDiagram](./Images/DataBaseSchemaDiagram.PNG)
+  
+----------------------------------------------------------------------------------------------------------------------------------------
+  
+## The Database
+
+* start the sql server  
+* type **psql**  
+* **CREATE DATABASE covid19;** create the database.
+* **\c covid19;** To connect to the database  
+  
+## The application.properties File
+
+server.port=8082
+spring.datasource.platform=postgres
+spring.datasource.url=jdbc:postgresql://localhost:5432/covid19
+spring.datasource.username=alaa
+spring.datasource.password=
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.initialization-mode=always
