@@ -64,7 +64,7 @@
             <span th:case="'input'"><h4 class="center">NO Complete Input YET!</h4></span>
             <span th:case="'empty'" ><h4 class="center">There Is NO Records</h4></span>
             <div th:case="*">
-                <div class="countryrow" th:unless="${empty == null}" th:each="countries: ${countriesList}" >
+                <div class="countryrow" th:each="countries: ${countriesList}" >
                     <div class="column">
                         <div class="card">
                             <h3 style="color:#DE2ED3"  th:text=" ${countries.dateString}"></h3>

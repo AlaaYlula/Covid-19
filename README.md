@@ -128,14 +128,14 @@
 
 * start the sql server  
 * type **psql**  
-* **CREATE DATABASE covid19;** create the database.
-* **\c covid19;** To connect to the database  
+* **CREATE DATABASE covid19new;** create the database.
+* **\c covid19new;** To connect to the database  
   
 ## The application.properties File
 
 server.port=8082
 spring.datasource.platform=postgres
-spring.datasource.url=jdbc:postgresql://localhost:5432/covid19
+spring.datasource.url=jdbc:postgresql://localhost:5432/covid19new
 spring.datasource.username=alaa
 spring.datasource.password=
 spring.jpa.hibernate.ddl-auto=update
@@ -144,3 +144,4 @@ spring.datasource.initialization-mode=always
 ----------------------------------------------------------------------------------------------------------------------------------------  
 
 [Link To the Project Question](https://github.com/AlaaYlula/Covid-19/blob/main/Project/1st-inter-task-Java.md)  
+[Link To the video](https://drive.google.com/file/d/1X4vSHfxuB-x54hC7mvRbzXWVOJDZDMJw/view?usp=sharing)  
