@@ -1,0 +1,61 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+/* Style the header */
+.header {
+  	padding-top: 200px;
+  	color: white;
+  	font-size: 20px;
+  	text-align: center;
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+}
+/* https://careerkarma.com/blog/css-background-image/*/
+.image {
+	background-image: url(https://www.human.de/fileadmin/_processed_/csm_20200608_Graphic_Header_107bb5ba95.png);
+	height: 350px;
+	background-repeat: no-repeat;
+    position: relative;
+    background-size:100% 100%;
+
+
+}
+.main-footer{
+    background-color: #01040A;
+    color:white;
+    display:flex;
+     /*this centers the text horizontally*/
+    justify-content: center;
+      /*this centers the text vertically*/
+    align-items: center;
+    /*grid-column: 1 / -1;
+    grid-row: 3 / -1;*/
+
+}
+
+.main-footer-container{
+   text-align: center;
+}
+/*  https://www.youtube.com/watch?v=qlCIXXhSX6Y */
+html , body{
+height:100%;
+}
+.container{
+min-height:100%;
+}
+.main{
+overflow:auto;
+padding-bottom:50px;
+}
+.footer{
+position:relative;
+height:50px;
+margin-top:-50px;
+clear:both;
+
+}
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>My Records</title>
+    <link th:href="@{/style.css}" rel="stylesheet"/>
+    <link th:href="@{/grid.css}" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="container">
+    <div class="main">
+
+
+    <div th:replace="fragments/header :: header"></div>
+
+</br></br>
+
+
+<h1 class="center"> Covid19 Statistics For All Countries</h1>
+</br></br>
+
+
+<td th:switch="${flag}">
+    <!-- Check if there is record or NOT -->
+    <span th:case="'true'" >
+        <div class="countryrow" th:each="countries: ${countriesList}">
+    <div class="column">
+        <div class="card">
+            <h3 style="color:#DE2ED3" th:text=" 'Country Name: ' + ${countries.country}"></h3>
+
+            <span th:text=" 'Date: ' + ${countries.dateString}"></span>
+            </br>
+            </br>
+            <form method="post" action="/deleterecord">
+                <input type="hidden" th:value="${countries.country_id}" name="country_id">
+                <input type="submit" class="button" value="DELETE">
+            </form>
+            </br>
+        </div>
+
+    </div>
+</div>
+
+    </span>
+    <span th:case="'false'">
+        <h2 style="color:#DE2ED3" class="center"> NO AVAILABLE RECORDS \_(-_-)_/ </h2>
+    </span>
+    <div th:case="*"></div>
+</td>
+
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

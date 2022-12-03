@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/style.css}" rel="stylesheet"/>
+
+</head>
+<body>
+<header th:fragment="/header">
+    <div class="header image">
+            <h1>COVID19 Statistics</h1>
+        </br>
+            <span>A website to provide you with all the updates on Covid-19 statistics around the world</span>
+    </div>
+
+    <div>
+        <ul class = "var">
+            <li class = "varItem"><a href="/">Home</a></li>
+            <li class = "varItem"><a href="/countries">All Countries</a></li>
+            <li class = "varItem"><a href="/records">My Records</a></li>
+        </ul>
+    </div>
+</header>
+
+</body>
+</html>

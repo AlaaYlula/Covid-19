@@ -1,0 +1,113 @@
+.center {
+  text-align: center;
+}
+
+.var {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.varItem {
+  float: left;
+}
+
+.varItem a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.varItem a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+
+.button {
+  background-color: #417ECF;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+/*  https://www.w3schools.com/howto/howto_css_column_cards.asp */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+
+/* https://stackoverflow.com/questions/55825182/how-to-align-cards-to-the-center-with-the-same-size */
+.row {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+}
+
+.countryrow{
+margin: 0 -5px;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the information cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+.cardstatistics{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #DE2ED3;
+  color:white;
+}
+
+/* https://www.w3schools.com/css/tryit.asp?filename=trycss_forms */
+/* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date */
+input[type=date], select {
+
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+
+
+

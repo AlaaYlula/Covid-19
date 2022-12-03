@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link th:href="@{/style.css}" rel="stylesheet"/>
+    <link th:href="@{/grid.css}" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="container">
+    <div class="main">
+
+    <div th:replace="fragments/header :: header"></div>
+
+</br></br>
+
+<h1 class="center"> World Total Statistics </h1>
+</br></br>
+
+<div class="row">
+    <div class="column">
+        <div class="cardstatistics"><h4 th:text=" 'Total Confirmed: ' + ${confirmed}"></h4>
+        </div>
+    </div>
+    <div class="column">
+        <div class="cardstatistics"><h4 th:text=" 'Total Deaths: ' + ${death}"></h4>
+        </div>
+
+    </div>
+    <div class="column">
+        <div class="cardstatistics"><h4 th:text=" 'Total Recovered: ' + ${recover}"></h4>
+        </div>
+    </div>
+
+</div>
+
+
+</br></br>
+
+        <h1 class="center">Get Statistics for a specific country </h1>
+</br></br>
+
+<div class="row">
+     <form method="post" action="/search">
+         <select th:if="${countryName != null}" id="country" name="country" >
+             <option th:value="${countryName}" th:text="${countryName}"></option>
+             <option th:each="country: ${countries}" th:value="${country}" th:text="${country}"></option>
+         </select>
+         <select th:unless="${countryName != null}"  name="country" >
+             <option th:each="country: ${countries}" th:value="${country}" th:text="${country}"></option>
+         </select>
+
+         <input th:if="${start == null}" type="date" id="start" name="start">
+         <input th:unless="${start == null}" type="date" th:value="${start}" name="start">
+
+         <input th:if="${end == null}" type="date" id="end" name="end">
+         <input th:unless="${end == null}" type="date" th:value="${end}" name="end">
+
+         <input type="submit" class="button" value="Search">
+        </form>
+</div>
+        <td th:switch="${wrong}">
+            <span th:case="'input'"><h4 class="center">NO Complete Input YET!</h4></span>
+            <span th:case="'empty'" ><h4 class="center">There Is NO Records</h4></span>
+            <div th:case="*">
+                <div class="countryrow" th:unless="${empty == null}" th:each="countries: ${countriesList}" >
+                    <div class="column">
+                        <div class="card">
+                            <h3 style="color:#DE2ED3"  th:text=" ${countries.dateString}"></h3>
+                            <!-- https://www.baeldung.com/thymeleaf-select-option -->
+                            <span th:text=" 'Number of Confirmed Cases: ' + ${countries.confirmedCases}"></span>
+                           </br>
+
+                       </div>
+
+                   </div>
+                </div>
+            </div>
+        </td>
+   </div>
+   </div>
+
+   <div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
