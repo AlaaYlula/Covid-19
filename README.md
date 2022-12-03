@@ -133,12 +133,12 @@
   
 ## The application.properties File
 
-server.port=8082
-spring.datasource.platform=postgres
-spring.datasource.url=jdbc:postgresql://localhost:5432/covid19new
-spring.datasource.username=alaa
-spring.datasource.password=
-spring.jpa.hibernate.ddl-auto=update
+server.port=8082  
+spring.datasource.platform=postgres  
+spring.datasource.url=jdbc:postgresql://localhost:5432/covid19new  
+spring.datasource.username=alaa  
+spring.datasource.password=  
+spring.jpa.hibernate.ddl-auto=update  
 spring.datasource.initialization-mode=always  
 
 ----------------------------------------------------------------------------------------------------------------------------------------  
