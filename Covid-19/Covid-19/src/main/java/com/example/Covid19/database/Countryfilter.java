@@ -18,9 +18,9 @@ public class Countryfilter {
 
     private String country;
     private int confirmedCases;
-//    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss.SSS",shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
     private Date date;
-    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss.SSS",shape = JsonFormat.Shape.STRING)
+//    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss.SSS",shape = JsonFormat.Shape.STRING)
     private String dateString;
     public Countryfilter() {
     }

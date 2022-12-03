@@ -1,5 +1,6 @@
 package com.example.Covid19.database;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -18,6 +19,7 @@ public class Countrydata {
     private int totalConfirmed;
     private int totalDeaths;
     private int totalRecovered;
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
     private Date date;
 
     private String dateString;

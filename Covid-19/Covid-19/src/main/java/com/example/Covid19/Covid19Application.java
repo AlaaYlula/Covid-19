@@ -44,7 +44,7 @@ public class Covid19Application {
 				Root countryResult = gson.fromJson(dataJson, Root.class); // All Countries
 				for (Country r:countryResult.Countries
 				) {
-					SimpleDateFormat DateFor = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+					SimpleDateFormat DateFor = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 					String stringDate = DateFor.format(r.Date);
 					Countrydata country = new Countrydata(r.Country,r.TotalConfirmed,r.TotalDeaths,r.TotalRecovered,r.Date,stringDate);
 					countryRepository.save(country);
