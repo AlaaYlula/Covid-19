@@ -1,6 +1,5 @@
 package com.example.Covid19.Controller;
 
-import com.example.Covid19.BluePrint.Countries.Country;
 import com.example.Covid19.Repositories.CountryRepository;
 import com.example.Covid19.Repositories.RecordRepository;
 import com.example.Covid19.database.Countrydata;

@@ -67,7 +67,7 @@
                 <div class="countryrow" th:each="countries: ${countriesList}" >
                     <div class="column">
                         <div class="card">
-                            <h3 style="color:#DE2ED3"  th:text=" ${countries.dateString}"></h3>
+                            <h3 style="color:#DE2ED3"  th:text="  'Date: ' + ${countries.dateString}"></h3>
                             <!-- https://www.baeldung.com/thymeleaf-select-option -->
                             <span th:text=" 'Number of Confirmed Cases: ' + ${countries.confirmedCases}"></span>
                            </br>

@@ -23,10 +23,6 @@ public class Countrydata {
     private Date date;
 
     private String dateString;
-    // https://attacomsian.com/blog/spring-data-jpa-one-to-one-mapping
-//    @OneToOne(mappedBy = "country", fetch = FetchType.LAZY,
-//            cascade = CascadeType.ALL)
-//    Record record;
 
     public Countrydata(){
 

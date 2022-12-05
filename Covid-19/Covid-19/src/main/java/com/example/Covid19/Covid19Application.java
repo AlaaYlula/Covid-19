@@ -16,6 +16,8 @@ import org.springframework.context.annotation.Bean;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
@@ -68,7 +70,7 @@ public class Covid19Application {
 			}
 		};
 	}
-	public static String ReadFromAPI(String url) throws FileNotFoundException {
+	public static String ReadFromAPI(String url) throws IOException {
 
 		String dataJson = "";
 		Gson gson = new Gson();
@@ -86,12 +88,37 @@ public class Covid19Application {
 			// Get the data
 			dataJson = statisticsURLBuffered.readLine();
 
+			//WriteOnJSonFile(dataJson);
 		} catch (Exception e) {
 			// Read From File If OFFLINE //
-			System.out.println(">>>>>>>> ERROR "+ e.toString());
+			// Every thing will work fine if Offline only the Filter will not because cannot reach the filtered API
+			dataJson = ReadJsonFile("summary.json");
 		}
 
 		return dataJson;
+	}
+	/*
+           Write the Recipes on the File
+      */
+	public static void WriteOnJSonFile(String dataJson) throws IOException {
+		//  Convert To Object From JSON Format
+		Gson gson = new Gson();
+		//Get the results Object
+		Root countryResult = gson.fromJson(dataJson, Root.class); // All Countries
+		// Write the Array to the File :
+		File localFile = new File("summary.json");
+		try (FileWriter localFileWriter = new FileWriter(localFile)) {
+			gson.toJson(countryResult, localFileWriter);
+		}
+	}
+	/*
+  Read Json File , Return the Recipes
+   */
+	public static String ReadJsonFile(String filename) throws IOException {
+		// https://www.digitalocean.com/community/tutorials/java-read-file-to-string
+	String content = new String(Files.readAllBytes(Paths.get(filename)));
+
+		return content;
 	}
 
 	public static String ReadFromAPINEW(String url) throws FileNotFoundException {
@@ -114,7 +141,7 @@ public class Covid19Application {
 //			dataJson = statisticsURLBuffered.readLine();
 
 			/* https://medium.com/swlh/getting-json-data-from-a-restful-api-using-java-b327aafb3751
-			   I used this insted for catch the country name data because it didn't work with ReadFromAPI() function
+			   I used this instead for catch the country name data because it didn't work with ReadFromAPI() function
 			 */
 			//Getting the response code
 			int responsecode = statisticsURLConnection.getResponseCode();

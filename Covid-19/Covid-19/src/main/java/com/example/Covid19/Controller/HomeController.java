@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -33,7 +34,7 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String getHome(Model model) throws FileNotFoundException {
+    public String getHome(Model model) throws IOException {
 
             //Convert To Object From JSON Format
             String dataJson = ReadFromAPI("https://api.covid19api.com/world/total");
@@ -60,7 +61,7 @@ public class HomeController {
 
     @PostMapping("/search")
     public String userFilter(@RequestParam String country , String start , String end , Model model,
-                                   RedirectAttributes attributes) throws FileNotFoundException, ParseException {
+                                   RedirectAttributes attributes) throws IOException, ParseException {
         // https://java2blog.com/format-date-to-yyyy-mm-dd-java/
         //object of SimpleDateFormat class
         // Specify format as "yyyy-MM-dd"
@@ -97,8 +98,10 @@ public class HomeController {
 
 
         AllCountryData slugCountry = allCountryRepository.findByCountry(country);
+        if(filterRepository.findAll().size()!=0){
         filterRepository.deleteAll();
-        //  Convert To Object From JSON Format
+        }
+        //  Convert To String From JSON Format
         String dataJsonFilter = ReadFromAPI("https://api.covid19api.com/country/"+slugCountry.getCountry_slug()+"/status/confirmed");
         Gson gsonFilter = new Gson();
         //Get the results Countries which we want filter on it
@@ -112,9 +115,11 @@ public class HomeController {
                 filterRepository.save(countrySaved);
             }
 
+            // Query to get the countries' data between range of two dates
         List<Countryfilter> countriesQuery1 = filterRepository.findByDateGreaterThanEqual(date1);
         List<Countryfilter> countriesQuery2 = filterRepository.findByDateLessThanEqual(date2);
 
+        // check if the date2 in the Query1 result so include the date2 data in the List result
         boolean flag = false;
         Countryfilter endDateCountry = new Countryfilter();
         // https://java2blog.com/format-date-to-yyyy-mm-dd-java/
@@ -129,9 +134,11 @@ public class HomeController {
             }
         }
 
+        // return the common date in the both Query1 and Query2 and put the result on the Query1
         countriesQuery1.retainAll(countriesQuery2);
 //        List<Date> dates = countriesQuery1.stream()
 //                .map(s -> s.getDate()).toList();
+        // check if the date2 in the Query1 result so include the date2 data in the List result
         if(flag){
             countriesQuery1.add(endDateCountry);
         }
@@ -159,11 +166,12 @@ public class HomeController {
                 }
             }
         }
+                //attributes.addFlashAttribute("countriesList", countryFiltered);
+
         */
 
-        //attributes.addFlashAttribute("countriesList", countryFiltered);
         attributes.addFlashAttribute("countriesList", countriesQuery1);
-        // Check if there is records for between the dates which the user input
+        // Check if there is records between the dates which the user input
         if (countriesQuery1.size()==0){
             wrong = "empty";
             attributes.addFlashAttribute("wrong", wrong);
