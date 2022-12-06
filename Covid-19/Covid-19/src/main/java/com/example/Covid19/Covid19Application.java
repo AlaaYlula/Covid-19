@@ -87,8 +87,6 @@ public class Covid19Application {
 			BufferedReader statisticsURLBuffered = new BufferedReader(statisticsURLReader);
 			// Get the data
 			dataJson = statisticsURLBuffered.readLine();
-
-			//WriteOnJSonFile(dataJson);
 		} catch (Exception e) {
 			// Read From File If OFFLINE //
 			// Every thing will work fine if Offline only the Filter will not because cannot reach the filtered API
@@ -97,20 +95,7 @@ public class Covid19Application {
 
 		return dataJson;
 	}
-	/*
-           Write the Recipes on the File
-      */
-	public static void WriteOnJSonFile(String dataJson) throws IOException {
-		//  Convert To Object From JSON Format
-		Gson gson = new Gson();
-		//Get the results Object
-		Root countryResult = gson.fromJson(dataJson, Root.class); // All Countries
-		// Write the Array to the File :
-		File localFile = new File("summary.json");
-		try (FileWriter localFileWriter = new FileWriter(localFile)) {
-			gson.toJson(countryResult, localFileWriter);
-		}
-	}
+
 	/*
   Read Json File , Return the Recipes
    */

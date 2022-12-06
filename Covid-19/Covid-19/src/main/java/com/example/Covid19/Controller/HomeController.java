@@ -120,6 +120,7 @@ public class HomeController {
         List<Countryfilter> countriesQuery2 = filterRepository.findByDateLessThanEqual(date2);
 
         // check if the date2 in the Query1 result so include the date2 data in the List result
+        // I did this because countriesQuery2 doesn't include the date2 value :/
         boolean flag = false;
         Countryfilter endDateCountry = new Countryfilter();
         // https://java2blog.com/format-date-to-yyyy-mm-dd-java/
@@ -133,6 +134,15 @@ public class HomeController {
                 break;
             }
         }
+
+
+
+//         This not return the country object with the date equal to date2:
+        // 1 //
+//        Countryfilter endDate = filterRepository.findByDate(date2);
+//        System.out.println(" >>>>>>>>> EQUAL "+ endDate.getDate());
+        // 2 //
+//        List<Countryfilter> range = filterRepository.findByDateBetween(date1,date2);
 
         // return the common date in the both Query1 and Query2 and put the result on the Query1
         countriesQuery1.retainAll(countriesQuery2);

@@ -13,5 +13,7 @@ public interface FilterRepository extends JpaRepository<Countryfilter,Long> {
     // https://www.bezkoder.com/jpa-repository-query/
     List<Countryfilter> findByDateGreaterThanEqual(Date date);
     List<Countryfilter> findByDateLessThanEqual(Date date);
+    Countryfilter findByDate(Date date);
+    List<Countryfilter>  findByDateBetween(Date date1,Date dat2);
 
          }
